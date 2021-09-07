@@ -1,5 +1,5 @@
 //importing express
-var express = require('express')
+/*var express = require('express')
 var app = express()
 //setting the server port'
 var server = app.listen(7070, ()=>{
@@ -21,5 +21,32 @@ var server = app.listen(7070, ()=>{
                 },
             }
         )
+    })
+})*/
+
+var express = require('express')
+var app = express();
+//creatin server
+var server = app.listen(7070, ()=>{
+    //creating route
+    app.get('/product/list',(req,res)=>{
+        res.json([{
+            Samsung_laptop:{
+                price: 450000,
+                discount: '5%',
+                Manufactorer_details:{
+                    Name: 'Sumsung Electronic',
+                    Location: 'Tatu city Along Ruiru Kiambu Road'
+                }
+            },
+            Neon_phone:{
+                price: 4999,
+                discount: '3%',
+                Manufactorer_details:{
+                    Name: 'Neon Smartphone Manufactores',
+                    Location: 'Garden City Nairobi'
+                }
+            }
+        }])
     })
 })
