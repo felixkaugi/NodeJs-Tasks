@@ -1,52 +1,60 @@
-//importing express
-/*var express = require('express')
-var app = express()
-//setting the server port'
-var server = app.listen(7070, ()=>{
-    //setting the route
-    app.get('/students/list', (req,res)=>{
-        //get response in the json formart
-        res.json(
-            {
-                Name: 'Kaugi',
-                id: 1,
-                Coures: 'computer science',
-                units:{
-                    cosc101: 'Database Management',
-                    cosc102: 'Fundamentals of Programming',
-                    cosc103: 'Digital Electronics',
-                    cosc104: 'Emergening Technology',
-                    cosc105: 'computing math',
-                    cosc106: 'object oriented programming'
-                },
-            }
-        )
-    })
-})*/
-
 var express = require('express')
-var app = express();
-//creatin server
-var server = app.listen(7070, ()=>{
-    //creating route
-    app.get('/product/list',(req,res)=>{
-        res.json([{
-            Samsung_laptop:{
-                price: 450000,
-                discount: '5%',
-                Manufactorer_details:{
-                    Name: 'Sumsung Electronic',
-                    Location: 'Tatu city Along Ruiru Kiambu Road'
-                }
-            },
-            Neon_phone:{
-                price: 4999,
-                discount: '3%',
-                Manufactorer_details:{
-                    Name: 'Neon Smartphone Manufactores',
-                    Location: 'Garden City Nairobi'
-                }
+var app = express()
+//create server
+var server =  app.listen(7070, ()=>{
+    //create a route
+    app.get('/students/list', (req,res)=>{
+        var data = [{
+            Name: 'Kaugi',
+            RegNo: 'EDS1',
+            Coures: 'Computer Science',
+            Units:{
+                COSC100: 'Object Oriented Programming',
+                COSC101: 'Fundamentals of Programming',
+                COSC103: 'Database management',
+                COSC104: 'Digital Electronics'
             }
-        }])
+        },{
+            Name: 'Ian',
+            RegNo: 'ED2',
+            Coures: 'Criminology',
+            Units:{
+                CBB01: 'Human Rights',
+                CBB02: 'Internatinal Law',
+                CBC03: 'Zoology',
+                COSC04: 'Philosophy'
+            }
+        }
+    ]
+        res.json(data)
+        for(var i = 0; i < data.length; i++){
+            console.log(data[i].Name)
+        }
     })
+    //creating an array with product, price, Discount and manfactures details
+    //create a route
+    app.get('/products/list', (req,res)=>{
+        var product =[{
+            Product_Name: 'Sumsung Phone',
+            Price: 10000,
+            Discount: '5%',
+            Manfactures_details:{
+                Name: 'Samsung Electronics',
+                Location: 'Tatu City'
+            }
+        },{
+            Product_Name: 'Neon',
+            Price: 4999,
+            iscount: '3%',
+            Manfactures_details:{
+                Name:'Neon Smart Phones',
+                Location: 'Garden City Nairobi'
+            }
+        }]
+        res.json(product)
+        for(var i = 0; i < product.length; i++){
+            console.log(product[i].Product_Name)
+        }
+    })
+   
 })
