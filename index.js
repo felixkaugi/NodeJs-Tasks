@@ -33,7 +33,7 @@ var server =  app.listen(7070, ()=>{
     })
     //creating an array with product, price, Discount and manfactures details
     //create a route
-    app.get('/products/list', (req,res)=>{
+    app.get('/products/list', (req,res)=>{   
         var product =[{
             Product_Name: 'Sumsung Phone',
             Price: 10000,
@@ -56,5 +56,28 @@ var server =  app.listen(7070, ()=>{
             console.log(product[i].Product_Name)
         }
     })
+    //creating route date
+    app.get('/date',(req,res)=>{
+        var dt =  Date();
+        res.send(dt)
+        
+    })
+    //creating route even
+   app.get('/even',(req,res)=>{
+       //declare an array of undefined size
+       
+       var arr =[];
+       //loop for inputs
+        
+       for(var i = 1000; i <= 1500; i++){
+           if(i % 2 ==0){
+               arr.push(i)
+            
+           }
+
+       }
+       res.json(arr)
+
+   })
    
 })
