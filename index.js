@@ -1,4 +1,6 @@
-var express = require('express')
+//var express = require('express')
+import express from 'express'
+import fetch from 'node-fetch'
 var app = express()
 //create server
 var server =  app.listen(7070, ()=>{
@@ -64,20 +66,19 @@ var server =  app.listen(7070, ()=>{
     })
     //creating route even
    app.get('/even',(req,res)=>{
-       //declare an array of undefined size
-       
+       //create a dynamic array
        var arr =[];
-       //loop for inputs
-        
-       for(var i = 1000; i <= 1500; i++){
+       for(var i = 1000; i <= 10000; i++){
            if(i % 2 ==0){
                arr.push(i)
-            
            }
-
        }
        res.json(arr)
-
    })
-   
+
+  app.get('/weather',(req,res)=>{
+      fetch('https://api.openweathermap.org/data/2.5/onecall?lat=-1.2824763&lon=36.8148693&appid=c2447ee0d5d8e95d70f2c54fc316302c')
+      .then((res)=> res.json())
+      .then(json => res.send(json))
+  })
 })
