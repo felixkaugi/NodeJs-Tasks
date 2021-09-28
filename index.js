@@ -2,11 +2,7 @@ var express = require('express')
 // var express = require ('express')
 //var fetch = require ('node-fetch')
 var app = express()
-var mongoose = require('mongoose')
-var passport = require("passport")
-var LocalStrategy = require('passport-local')
-var validator = require('validator')
-var expressValidator = require('express-validator')
+var mongoose = require('mongoose') 
 var Users = require('./modules/users')
 // var passportLocalMongoose = require('passport-local-mongoose')
 // //importing modules
@@ -204,7 +200,7 @@ app.post('/register',(req,res)=>{
         })
         Users.createUser(newUser, function(err,user){
             if(err) throw err;
-            console.log(user)
+            // console.log(user)
             res.send('Record Created')
         })
       }
@@ -223,6 +219,10 @@ app.post('/login', (req,res)=>{
      Users.authenticate(Email,Password,function(err, user){
         if(err){
             res.send('user not found')
+        }else{
+            console.log("Welcome  "+user.Email)
+            res.send("Welcome  "+user.Email)
+          
         }
      })
 })
