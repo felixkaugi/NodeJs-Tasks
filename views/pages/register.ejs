@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register here</title>
+    <%- include('style'); %>
+</head>
+<body>
+    <form action="/register" method ="post">
+        <div class="input-group">
+            <label for="name">Username</label>
+            <input type="text" name="Username" placeholder="Enter Your Username Here">
+         </div>
+       <div class="input-group">
+           <label for="username">Email</label>
+           <input type="text"name ="Email" placeholder="Enter Your Email Here">
+       </div>
+       <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" name="Password" placeholder="Enter Your Password Here">
+       </div>
+       <div class="input-group">
+           <input type="submit"class="btn" value="Register">
+       </div>
+       <% if(typeof message != "undefined" && message) { %>
+        <p class="error"> 
+            <%= message %>
+        </p>
+        <% } %>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Here</title>
+    <%- include('style'); %>
+</head>
+<body>
+    <form action="/login" method ="post">
+        <div class="input-group">
+            <label for="Email">Email</label>
+            <input type="Email" name="Email" placeholder="Enter Your Email Here">
+         </div>
+       <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" name="Password" placeholder="Enter Your Password Here">
+       </div>
+       <div class="input-group">
+           <input type="submit"class="btn" value="Login">
+       </div>
+       <% if(typeof message != "undefined" && message) { %>
+        <p class="error"> 
+            <%= message %>
+        </p>
+        <% } %>
+    </form>
+</body>
+</html>
+<!-- install mongoDB
+create a js to connect to the mongoDB(from here )
+import the file to the index that has the root
+create a function that will addd a name username and password to the db
+function to compare the existying details 
+using the login interface login with the details created
+if password is wrong give invalid message if password is ok direct thye user to the home page
+in the hompage give a message welcome username and welcome message -->

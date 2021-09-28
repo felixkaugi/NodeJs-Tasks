@@ -1,0 +1,118 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather APP</title>
+    <style>
+        body{
+            background: #bbb;
+        }
+        .current{
+            background:#cdcdcd;
+            width: 50%;
+            margin: 20px auto;
+            border: 1px solid #eee;
+            padding: 20px;
+            height: 120px;
+            border-radius: 5px;
+        }
+        .current-temp{
+            display: inline-flex;
+            flex-wrap: wrap;
+            padding: 5px;
+        }
+        .day{
+            display: inline-flex;
+            padding: 10px;
+            word-spacing: 10px;
+        }
+    </style>
+</head>
+<body>
+   <div class="container">
+       <section>
+           <div class="current">
+              
+               <h1><%- (result.current.temp - 273.15).toPrecision(2) %>℃ </h1>
+           </div>
+       </section>
+       <div class="container">
+        <section>
+            <div class="current">
+               <p>
+                  <% for(var i =0; i < result.daily.length; i++) { %>
+                    <p class="current-temp"><%-(result.daily[i].temp.day -273.15).toPrecision(2)
+                        %>℃ 
+                        
+                    </p> 
+                        <% } %>
+               </p> 
+               <p>
+                   <% for(var i =0; i < result.daily.length; i++){
+                       var date= result.daily[i].dt; %>
+                    
+                   
+                    <p class="day">
+                      
+                       <%= formatDate(date )%>
+                         
+                    </p>
+                  <% } %>
+               </p> 
+              
+              
+            </div>
+        </section>
+   </div> 
+</body>
+</html>
+<script>
+    
+    
+//   console.log(  dates(1631264400))
+
+function sum(){
+    var num1 = 1
+    var num2 = 3
+    var sum = num1 * num2
+    console.log(sum)
+}sum()
+function total(num1, num2){
+
+
+
+    
+    return (num1 * num2)
+
+}
+console.log(total(3, 3))
+console.log(total(4, 3))
+console.log(total(5, 3))
+console.log(total(6, 3))
+console.log(7*3)
+function details(name){
+    return name
+}
+console.log(details('Felix'))
+console.log(details('Jahson'))
+
+// var myArray = [2,63,4,5,6,7]
+// myArray.sort(function(a,b){
+//     return a - b
+// })
+// console.log(myArray)
+var num1 = [1, 4, 6, 8]
+function myArray(cars){
+   
+     cars.sort(function(a,b){
+         return a-b
+     })
+     return cars
+}
+myArray(num1)
+console.log(myArray(num1))
+console.log(myArray([3,2,6,1]))
+</script>
+
+ 
