@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <title>Report</title>
+</head>
+<body>
+  <%- include ('../partials/menu') %>
+  <form>
+    <legend>Sales Report</legend>
+    <div class="form-row align-items-center">
+      <div class="col-sm-3 my-1">
+        <input type="text" name="start_date" readonly id="start_date" class="form-control pr-5" placeholder="From Date" />
+      </div>
+      <div class="col-sm-3 my-1">
+        <div class="input-group">
+          <input type="text" name="end_date" readonly id="end_date" class="form-control" placeholder="To Date" />
+        </div>
+      </div>
+      <div class="col-sm-3 my-1">
+        <div class="input-group">
+          <button class="btn btn-info" type="button" id="filter"><i class="fas fa-search"></i> Search</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <thead>
+
+      <tr>
+        <th class="th-sm">Receipt No.</th>
+        <th class="th-sm">Cashier</th>
+        <th class="th-sm">Customer Name</th>
+        <th class="th-sm">Discount %</th>
+        <th class="th-sm">Date</th>
+        <th class="th-sm">Value</th>
+     
+      </tr>
+    </thead>
+    <tbody>
+      <% for(var i = 0; i < message.length; i++){ %>
+      <tr>
+        <td><%= message[i]['receipt_no'] %></td>
+        <td><%= message[i]['cashier'] %></td>
+        <td><%= message[i]['customers_name'] %></td>
+        <td><%= message[i]['discount'] %>%</td>
+        <td><%= message[i]['date'] %></td>
+        <td><%= message[i]['value'] %></td>
+      </tr>
+      <%}%>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>Receipt No. </th>
+        <th>Cashier </th>
+        <th>Customer Name </th>
+        <th>Discount </th>
+        <th>Date</th>
+        <th>Value</th>
+      </tr>
+    </tfoot>
+    <tfoot>
+      <% for(var i = 0; i < message.length; i++){ %>
+    <tr>
+      <th colspan="3" class="text-right">Total:</th>
+      <th id="discount"><%= message[i]['discount'] %></th>
+      <th id="sales">Sales</th>
+    </tr>
+    <%}%>
+    </tfoot>
+  </table>
+</body>
+</html>

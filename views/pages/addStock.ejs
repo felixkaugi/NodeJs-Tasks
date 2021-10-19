@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <title>Sales</title>
+</head>
+<style>
+  form{
+    margin-top: 50px;
+    padding: 10px;
+  }
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<body>
+  <%- include ('../partials/menu') %>
+  <form action="/add_stock" method="post">
+    <legend>Add Stock</legend>
+    <div class="row g-3">
+      <div class="col">
+        <label for="barcode">Barcode</label>
+        <input type="text"name="barcode" class="form-control" placeholder="Barcode">
+      </div>
+      <div class="col">
+        <label for="product_name">Product Name</label>
+        <input type="text"name="product_name" class="form-control" placeholder="Product Name">
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col">
+        <label for="Price">Price</label>
+        <input type="text"name="price" class="form-control" placeholder="Price">
+      </div>
+      <div class="col">
+        <label for="Stock">Stocks</label>
+        <input type="text"name="stocks" class="form-control" placeholder="Stock">
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col">
+        <label for="unit">Units</label>
+        <input type="text"name="units" class="form-control"placeholder="Unit">
+      </div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</body>
+</html>

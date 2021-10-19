@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>List Of Users</title>
+	<% include('style') %>
+</head>
+<body>
+   <div class="conatiner">
+   	<h3>List Of Users</h3>
+   <table>
+   	   	<tr>
+   	   		<th>Username</th>
+   	   		<th>Email</th>
+   	   	</tr>
+   	   <% for(var i = 0; i < message.length; i++) { %>
+   	   
+   	   	<tr>
+   	   <td><%= message[i]["Username"] %></td>
+
+   	   <td><%= message[i]["Email"] %> </td><br>
+   	   </tr>
+   	   </table> 
+   	   <%}%>
+    </div>
+</body>
+</html>

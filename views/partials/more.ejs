@@ -1,0 +1,125 @@
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <%- include('style') %>
+ 
+    <title>Add stock</title>
+</head>
+<body>
+  <%- include ('../partials/menu') %>
+<form action="/add_stock" method="post">
+    <legend>Add Stock</legend>
+    <div class="mb-3">
+      <label for="barcode" class="form-label">Barcode</label>
+      <input type="text" class="form-control"name="barcode" placeholder="barcode"required autocomplete="off">
+    </div>
+      <div class="mb-3">
+        <label for="Product_name" class="form-label">Product Name</label>
+        <input type="text" class="form-control"name="product_name" placeholder="Product_name"autocomplete="off" required>
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label"></label>
+        <input type="text" class="form-control"name="price" placeholder="price"required autocomplete="off">
+      </div>
+      <div class="mb-3">
+        <label for="stocks" class="form-label">Stocks</label>
+        <input type="text" class="form-control"name="stocks" placeholder="stocks"required autocomplete="off">
+      </div>
+  <div class="mb-3">
+    <label for="units" class="form-label">Units</label>
+    <input type="text" class="form-control"name="units" placeholder="units"autocomplete="off"  required>
+  </div><br>
+  <button type="submit" id="btn" class="btn btn-success">Submit +</button>
+</form>
+</body>
+</html>
+<!-- ///////////////////////////menu code starts here////////////////////////////// -->
+<%- include('style') %>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#">#1</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"id="dashboard"><a href="/home">Dashboard <i class="fa fa-tachometer"></i></a></li>
+          <li id="inventory"><a href="/inventory">Inventory <i class="fa fa-houzz"></i></a></li>
+          <li id="sales"><a href="/sales">Sales <i class="fa fa-shopping-cart"></i></a></li>
+          <li id="report"><a href="/report">Reports <i class="fa fa-bar-chart"></i></a></li>
+          <li id="setting"><a href="/setting">Settings <i class="fa fa-cog"></i></a></li>
+          <li id="users"><a href="/users">Users <i class="fa fa-users"></i></a></li>
+          <li id="more"><a href="#">More <i class="fa fa-caret-down"></i></a>
+            <div class="sub-menu-bar">
+              <ul>
+                <li><a href="/list_products">List Products</a></li>
+                <li><a href="/add_stock">Add Stock</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+<!-- ///////////////////////////menu code ends here//////////////////////////////// -->
+<!-- ///////////////////////////sales code starts here ////////////////////////////////// -->
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <title>Sales</title>
+</head>
+<body>
+  <style>
+    form{
+      width: 50%;
+      margin: 20px auto;
+      text-align: center;
+    }
+  </style>
+  <%- include ('../partials/menu') %>
+  <form action="/sales" method="post">
+    <legend>Sales</legend>
+    <div class="form-group">
+      <label for="Receipt No.">Receipt No.</label>
+      <input type="text" class="form-control"name="receipt_no"id="formGroupExampleInput" placeholder="Receipt No.">
+    </div>
+    <div class="form-group">
+      <label for="Cashier">Cashier</label>
+      <input type="text" class="form-control" name="cashier" id="formGroupExampleInput2" placeholder="Cashier">
+    </div>    <div class="form-group">
+      <label for="customers name">Customers Name</label>
+      <input type="text" class="form-control" name="customers_name" id="formGroupExampleInput2" placeholder="Customer Name">
+    </div>
+    <div class="form-group">
+      <label for="Discount">Discount</label>
+      <input type="text" class="form-control" name="discount" id="formGroupExampleInput2" placeholder="Discount">
+    </div>
+    <div class="form-group">
+      <label for="Date">Date</label>
+      <input type="text" class="form-control" name="date" id="formGroupExampleInput2" placeholder="Date">
+    </div>
+    <div class="form-group">
+      <label for="value">Value</label>
+      <input type="text" class="form-control" name="value" id="formGroupExampleInput2" placeholder="Value">
+    </div>
+    <div class="form-group">
+      <input type="submit" class="btn btn-success" value="submit">
+    </div>
+  </form>
+</body>
+</html>
+
+<!-- ///////////////////////////////sales code ends here //////////////////////////////// -->

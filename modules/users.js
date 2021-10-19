@@ -1,6 +1,5 @@
 var mongoose = require('mongoose') 
 mongoose.connect('mongodb://localhost:27017/Userauth')
-var db = mongoose.connect
 //user schema
 var Userschema = mongoose.Schema({
     Username: {
@@ -27,10 +26,11 @@ var Userschema = mongoose.Schema({
  
 var User = module.exports = mongoose.model('User', Userschema)
 module.exports.createUser = function(newUser, callback){
+    
     newUser.save(callback)
 }
 module.exports.authenticate = function(email,password, callback){
-// console.log(email)
+//console.log(email)
 // console.log(password)
     User.findOne({Email: email,Password: password})
     .exec(function(err, user){
@@ -43,5 +43,28 @@ module.exports.authenticate = function(email,password, callback){
            return callback(err,user)
         }
         
+    })
+}
+
+module.exports.getUsers = function(callback){
+    User.find({}).exec(function(err,user){
+        if(err){
+            return callback(err)
+        }
+        else{
+            return callback(err, user)
+        }
+    })
+}
+// //module to update data
+module.exports.updateUser = function(username, email,callback){
+    User.findOneAndUpdate({Username: username, Email: email})
+    .exec(function(err,user){
+      if(err){
+          return callback(err)
+      }
+      else{
+          return callback(err, user)
+      }
     })
 }
