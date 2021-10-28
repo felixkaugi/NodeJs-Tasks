@@ -33,9 +33,10 @@
         <th class="th-sm">Receipt No.</th>
         <th class="th-sm">Cashier</th>
         <th class="th-sm">Customer Name</th>
+        <th class="th-sm">Product Name</th>
         <th class="th-sm">Discount %</th>
         <th class="th-sm">Date</th>
-        <th class="th-sm">Value</th>
+        <th class="th-sm">Price</th>
      
       </tr>
     </thead>
@@ -45,9 +46,10 @@
         <td><%= message[i]['receipt_no'] %></td>
         <td><%= message[i]['cashier'] %></td>
         <td><%= message[i]['customers_name'] %></td>
+        <td><%= message[i]['product_name'] %></td>
         <td><%= message[i]['discount'] %>%</td>
         <td><%= message[i]['date'] %></td>
-        <td><%= message[i]['value'] %></td>
+        <td><%= message[i]['price'] %></td>
       </tr>
       <%}%>
     </tbody>
@@ -56,19 +58,21 @@
         <th>Receipt No. </th>
         <th>Cashier </th>
         <th>Customer Name </th>
+        <th>Product Name </th>
         <th>Discount </th>
         <th>Date</th>
-        <th>Value</th>
+        <th>Price</th>
       </tr>
     </tfoot>
     <tfoot>
-      <% for(var i = 0; i < message.length; i++){ %>
+
     <tr>
-      <th colspan="3" class="text-right">Total:</th>
-      <th id="discount"><%= message[i]['discount'] %></th>
+      <% for (var j = 0; j < results.length; j++) { %> 
+      <th colspan="3" class="text-right"><%= results[j]['_id'] %>   Total:  <%= results[j]['price']%> </th>
+      <th id="discount"></th>
       <th id="sales">Sales</th>
     </tr>
-    <%}%>
+     <% } %>
     </tfoot>
   </table>
 </body>

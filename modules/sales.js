@@ -18,7 +18,10 @@ var salesSchema = mongoose.Schema({
         type: String,
         default: (new Date()).getTime()
     },
-    value:{
+    price:{
+        type: String
+    },
+    product_name:{
         type: String
     }
 })
@@ -30,10 +33,23 @@ module.exports.createSales = function(newSale, callback){
 //module to list all the sales records
 module.exports.listSales = function(callback){
     sales.find({}).exec(function(err,sale){
+         if(err){
+             return callback(err)
+         }else{
+             return callback(err, sale)
+         }
+    })
+    
+}
+module.exports.compute = function(callback){
+    sales.aggregate([
+        {$match: {} },
+        {$group: {_id: "$product_name", price: {$sum: {$toDouble:"$price"}}}}
+    ]).exec(function(err, total){
         if(err){
             return callback(err)
         }else{
-            return callback(err, sale)
+            return callback(err, total)
         }
     })
 }

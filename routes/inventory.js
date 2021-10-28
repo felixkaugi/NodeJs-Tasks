@@ -14,7 +14,24 @@ router.get('/inventory',ensureAuthenticated, (req,res)=>{
         if(err){
             res.send(err)
         }else{
-            res.render('pages/inventory', {message: product})
+            Stock.stockWorth(function(err, totalSum){
+                if(err){
+                    res.send(err)
+                }else{
+                    // console.log(totalSum)
+                    res.render('pages/inventory', {message: product, results: totalSum})
+                }
+            })
+            // res.render('pages/inventory', {message: product})
+        }
+    })
+})
+router.get('/pro_join', (req,res)=>{
+    Stock.innReport(function(err, innv){
+        if(err){
+            res.send(err)
+        }else{
+            res.render('pages/join', {message: innv})
         }
     })
 })
@@ -53,7 +70,7 @@ router.put('/inventory/:id',async  (req,res)=>{
       }
    }
 })
-//create a delete route
+//create a delete route  
 router.delete('/inventory/:id',async (req,res)=>{
    var prods
    try{
@@ -65,7 +82,7 @@ router.delete('/inventory/:id',async (req,res)=>{
        res.redirect('/inventory')
    }
    catch{
-       res.redirect('/inventory')
+       res.redirect('/inventory') 
    }
 
 })

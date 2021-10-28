@@ -40,4 +40,5 @@ router.get('/list_products',ensureAuthenticated, (req,res)=>{
         }
     })
 })
+
 module.exports = router

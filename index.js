@@ -4,21 +4,19 @@ var express = require('express')
 var cookieParser = require('cookie-parser')
 var methodOverride = require('method-override')
 var app = express()
-
 var mongoose = require('mongoose')
 // import Prod from './modules/addProducts'
 var Prod = require('./modules/addProducts')
 var {ensureAuthenticated} = require('./config/auth')
 //module for stock
-
 // var prod = require('./modules/addProducts')
 //importing the sales modules
-
 var  bodyParser = require ('body-parser')
 app.use('/', require('./routes/user'))
 app.use('/', require('./routes/inventory'))
 app.use('/',require('./routes/sales'))
 app.use('/',require('./routes/stock'))
+app.use('/sales_report',require('./routes/sales'))
 app.use( express.static( "public" ) );
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
@@ -161,15 +159,6 @@ app.set('view engine', 'ejs')
 // 
 
 //end of the code to perform crud operation 
-
-
-//route to list all the products
-//creating a route to list products
-
-//create a route to add stock
-
-//create a route to the report
-
 //create server
 var PORT = process.env.PORT || 7071
 app.listen(7071, console.log(`server running at port ${PORT}`))

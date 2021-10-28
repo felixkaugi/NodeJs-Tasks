@@ -16,15 +16,17 @@ router.post('/sales',(req,res)=>{
     var cashier = req.body.cashier
     var customers_name = req.body.customers_name
     var discount = req.body.discount
-    var value = req.body.value
+    var price = req.body.price
     var date = req.body.date
+    var product_name = req.body.product_name
     var newSaless = new sales({
         receipt_no: receipt_no,
         cashier: cashier,
         customers_name: customers_name,
         discount: discount,
         date: date,
-        value:value
+        price: price,
+        product_name: product_name
     })
     sales.createSales(newSaless, function(err,sale){
         if(err){
@@ -34,13 +36,32 @@ router.post('/sales',(req,res)=>{
         }
     })
 })
-router.get('/report',ensureAuthenticated,(req,res)=>{
+router.get('/report',(req,res)=>{
     sales.listSales(function(err,sale){
       if(err){
           res.send(err)
       }else{
-        res.render('pages/report', {message: sale})
+          sales.compute(function(err, total){
+              if(err){
+                  res.send(err)
+              }else{
+                  res.render('pages/report', {message: sale, results: total })
+                  
+              }
+          })
+        // res.render('pages/report', {message: sale})
       }
     })
+   
 })
+// router.get('/report', (req,res)=>{
+//     sales.compute(function(err, total){
+//         if(err){
+//             res.send(err)
+//         }else{
+//             res.render('pages/report', {results: total})
+//         }
+//     })
+// })
+
 module.exports = router
